@@ -7,10 +7,9 @@ ms.author: anclear
 ---
 # Send proactive messages
 
-> [!Note]
-> The code samples in this article make use of the v3 Bot Framework SDK, and v3 Teams Bot Builder SDK extensions. Conceptually, the information applies when using the v4 versions of the SDK, but the code is slightly different.
+[!INCLUDE [v4 to v3 pointer](~/includes/v4-to-v3-pointer-bots.md)]
 
-A proactive message is a message that is sent by a bot to start a conversation. You may want your bot to start a conversation for a number of reasons, including:
+A proactive message is a message that is sent by a bot outside of the context of an existing conversation. You may want your bot to send a proactive message for a number of reasons, including:
 
 * Welcome messages for personal bot conversations
 * Poll responses
@@ -50,12 +49,22 @@ When using proactive messaging to send notifications you need to make sure your 
 
 ## Obtain necessary user information
 
-Bots can create new conversations with an individual Microsoft Teams user by obtaining the user’s *unique ID* and *tenant ID.* You can obtain these values using one of the following methods:
+In order to send a proactive message, you need to first collect the necessary information to create the conversation or send the message to an existing conversation. The information you need must be obtained be receiving a message a message from Microsoft Teams, or through Graph API calls. Some typical ways to obtain the necessary information include:
 
 * By [fetching the team roster](~/bots/how-to/get-teams-context.md#fetching-the-team-roster) from a channel your app is installed in.
 * By caching them when a user [interacts with your bot in a channel](~/bots/how-to/conversations/channel-and-group-conversations.md).
 * When a users is [@mentioned in a channel conversation](~/bots/how-to/conversations/channel-and-group-conversations.md#-mentions) the bot is a part of.
-* By caching them when you [receive the `conversationUpdate`](~/bots/how-to/conversations/subscribe-to-conversation-events.md#team-member-or-bot-addition) event when your app is installed in a personal scope, or new members are added to a channel or group chat that
+* By caching them when you [receive the `conversationUpdate`](~/bots/how-to/conversations/subscribe-to-conversation-events.md#team-member-or-bot-addition) event when your app is installed in a personal scope, or new members are added to a channel or group chat that.
+* Proactively install your app [using Graph](#proactively-install-your-app-using-grpah)
+
+Depending on the type of proactive message you're sending, you will need different information. The following table shows what information you'll need depending on what type of proactive message you need to send.
+
+| Type of Proactive Message | Information required |
+|---------------------------|----------------------|
+|Send a one-to-one message, option 1  | Service URL </br> Unique user Id </br> Tenant Id|
+|Send a one-to-one message, option 2  | Conversation Id </br> Tenant Id|
+|Create a new conversation thread | Service URL </br> Channel Id |
+|Reply to existing conversation thread | Service URL </br> Message Id |
 
 ### Proactively install your app using Graph
 
@@ -67,6 +76,32 @@ Occasionally it may be necessary to proactively message users that have not inst
 You can only install apps that are in your organizational app catalogue, or the Teams app store.
 
 See [Install apps for users](/graph/teams-proactive-messaging) in the Graph documentation for complete details. There is also a [sample in .NET](https://github.com/microsoftgraph/contoso-airlines-teams-sample/blob/283523d45f5ce416111dfc34b8e49728b5012739/project/Models/GraphService.cs#L176).
+
+## Send a one-to-one message
+
+To send a one-to-one message to one of your users two things need to happen. First, the conversation between your bot and the user must exist, and second you send a message
+
+### Create the conversation
+
+adsf
+
+### Send the message
+
+afd
+
+## Send a channel message
+
+asdf
+
+### Create a new conversation thread
+
+asdf
+
+### Reply to an existing conversation thread
+
+asdf
+
+
 
 ## Examples
 
