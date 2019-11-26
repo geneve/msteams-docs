@@ -79,11 +79,11 @@ See [Install apps for users](/graph/teams-proactive-messaging) in the Graph docu
 
 ## Send a one-to-one message
 
-To send a one-to-one message to one of your users two things need to happen. First, the conversation between your bot and the user must exist, and second you send a message
+To send a one-to-one message to one of your users two things need to happen. First, the conversation between your bot and the user must exist, and you must have the `conversationId`. Once you have the correct Id, you'll use that to send the message.
 
 ### Create the conversation
 
-adsf
+
 
 ### Send the message
 
